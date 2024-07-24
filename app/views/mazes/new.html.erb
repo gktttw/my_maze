@@ -1,0 +1,17 @@
+<h1>Create a New Maze</h1>
+
+<% if flash[:alert] %>
+  <div class="alert">
+    <%= flash[:alert] %>
+  </div>
+<% end %>
+
+<%= form_with url: mazes_path, method: :post do %>
+  <div>
+    <%= label_tag :size, "Maze Size" %>
+    <%= number_field_tag :size, nil, min: 5, required: true %>
+  </div>
+  <div>
+    <%= submit_tag "Create Maze" %>
+  </div>
+<% end %>

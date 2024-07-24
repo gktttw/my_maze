@@ -1,0 +1,7 @@
+<h1>Mazes!</h1>
+
+<% @mazes.each do |maze| %>
+  <h2><%= link_to maze.id, maze_path(maze) %></h2>
+<% end %>
+
+<%= link_to 'New Maze', new_maze_path %>

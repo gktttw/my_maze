@@ -3,7 +3,7 @@ class Maze < ApplicationRecord
   validates :grid, presence: true
 
   def self.create_maze(size)
-    m = MyMaze.new(size)
+    m = MazeGenerator.new(size)
     create!(size: size, grid: m.grid.to_json, solution: m.solve.to_json)
   end
 
