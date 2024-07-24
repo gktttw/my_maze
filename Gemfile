@@ -50,6 +50,9 @@ group :development, :test do
   # debug
   gem 'pry', '~> 0.14.2'
   gem 'pry-byebug'
+  gem 'rspec-rails', '~> 6.1.0'
+  gem 'factory_bot_rails', '~> 6.4'
+  gem 'rails-controller-testing'
 end
 
 group :development do
