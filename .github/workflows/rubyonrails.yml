@@ -7,7 +7,8 @@
 name: "Ruby on Rails CI"
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - '**'
   pull_request:
     branches: [ "main" ]
 jobs:
@@ -28,14 +29,19 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      # Add or replace dependency steps here
       - name: Install Ruby and gems
-        uses: ruby/setup-ruby@55283cc23133118229fd3f97f9336ee23a179fcf # v1.146.0
+        uses: ruby/setup-ruby@v1
         with:
-          bundler-cache: true
           ruby-version: '3.1.4'
-      - run: bundle install
-      - run: bundle exec rspec
+          bundler-cache: true
+      - name: Install dependencies
+        run: |
+          sudo apt-get -yqq install libpq-dev build-essential libcurl4-openssl-dev
+          gem install bundler
+          bundle install --jobs 4 --retry 3
+          yarn install
+      - name: Run tests
+        run: bin/rails db:setup spec
 
   # lint:
   #   runs-on: ubuntu-latest
