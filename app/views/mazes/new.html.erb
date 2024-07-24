@@ -6,10 +6,10 @@
   </div>
 <% end %>
 
-<%= form_with url: mazes_path, method: :post do %>
+<%= form_with url: mazes_path, method: :post, data: { turbo: false } do %>
   <div>
     <%= label_tag :size, "Maze Size" %>
-    <%= number_field_tag :size, nil, min: 5, required: true %>
+    <%= number_field_tag :size, nil, required: true %>
   </div>
   <div>
     <%= submit_tag "Create Maze" %>
