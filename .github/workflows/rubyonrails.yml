@@ -7,7 +7,8 @@
 name: "Ruby on Rails CI"
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - '**'
   pull_request:
     branches: [ "main" ]
 jobs:
@@ -34,8 +35,8 @@ jobs:
         with:
           bundler-cache: true
           ruby-version: '3.1.4'
-      - run: bundle install
-      - run: bundle exec rspec
+      - name: Run tests
+        run: bin/rails db:setup spec
 
   # lint:
   #   runs-on: ubuntu-latest
