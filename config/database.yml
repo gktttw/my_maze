@@ -21,10 +21,10 @@ default: &default
 
 development:
   <<: *default
-  database: myapp_development
-  username: uuu
-  password: ppp
-  port: 5433
+  database: maze_development
+  username: maze_user
+  password: maze_password
+  port: 5432
   host: localhost
 
   # The specified database role being used to connect to PostgreSQL.
