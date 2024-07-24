@@ -12,8 +12,9 @@ class MazeGenerator
   end
 
   def validate_size!(size)
-    raise "Size should be odd number" if size.even?
-    raise "Size should be greater than 5" if size < 5
+    raise MazeError.new("Size should be odd number") if size.even?
+    raise MazeError.new("Size should be greater than 5") if size < 5
+    raise MazeError.new("Size should be less than 61") if size > 61
   end
 
   def generate_path
@@ -106,5 +107,8 @@ class MazeGenerator
     end
     @solution[1][1] = 0
     @solution[@size - 2][@size - 2] = 0
+  end
+
+  class MazeError < StandardError
   end
 end
