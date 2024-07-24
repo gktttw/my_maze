@@ -33,7 +33,7 @@
 </head>
 
 <body data-controller="maze-show">
-  <h1>maze</h1>
+  <h1>maze size: <%=@maze.size%></h1>
   <div class="maze-container" id="maze-container" data-grid="<%= @maze.grid %>" data-solution="<%= @maze.solution %>" ></div>
   <button id="toggle-solution-button">Show Solution</button>
   <br>
