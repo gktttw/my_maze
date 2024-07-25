@@ -1,6 +1,6 @@
 class MazesController < ApplicationController
   def index
-    @mazes = Maze.all
+    @mazes = Maze.order(size: :asc).all
   end
 
   def show
