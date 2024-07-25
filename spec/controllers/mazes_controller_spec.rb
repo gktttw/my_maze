@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "MazesControllers", type: :request do
   describe "GET index" do
     it "returns http success" do
-      expect(Maze).to receive(:all).and_return([])
+      allow(Maze).to receive_message_chain(:order, :all).and_return([])
       get "/mazes"
       expect(response).to have_http_status(:success)
     end
